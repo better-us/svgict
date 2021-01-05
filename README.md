@@ -1,2 +1,2 @@
-# svgicon-creator
+# svgict
 svg icon creator
