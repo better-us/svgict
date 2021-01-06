@@ -11,7 +11,7 @@ async function buildVue(inDir, outDir) {
   console.log('Building Vue components...');
 
   const svgFiles = fs.readdirSync(inDir).filter(file => path.extname(file) === '.svg');
-  const getSvg = svgFile => fs.readFileSync(path.join(inDir, svgFile), { encoding: 'utf-8' });
+  const getSvg = svgFile => fs.readFileSync(path.join(inDir, svgFile), 'utf8');
   const svgToVue = svg => {
     return compile(svg, {
       mode: 'module',

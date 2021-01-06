@@ -83,7 +83,7 @@ async function buildReact(outDir) {
 
     fs.writeFileSync(location, component, 'utf-8');
 
-    console.log('Successfully built', ComponentName);
+    // console.log('Successfully built', ComponentName);
 
     const exportString = `export { default as ${ComponentName} } from './${i}';\r\n`;
     fs.appendFileSync(path.join(outDir, 'index.js'), exportString, 'utf-8');

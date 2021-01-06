@@ -10,7 +10,7 @@ async function optimizeSvgFiles(inDir) {
       .readdirSync(inDir)
       .filter(file => path.extname(file) === '.svg')
       .map(svgFile => {
-        const svg = fs.readFileSync(path.join(inDir, svgFile), { encoding: 'utf-8' });
+        const svg = fs.readFileSync(path.join(inDir, svgFile), 'utf8');
         return optimizeSvg(svg).then(svg => fs.writeFileSync(path.join(inDir, svgFile), svg));
       }),
   );

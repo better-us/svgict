@@ -5,6 +5,7 @@ const pkg = require('../package.json');
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
+const { cosmiconfigSync } = require('cosmiconfig');
 const optimizeSvgFiles = require('./optimize-svg-files');
 const buildIconsJSON = require('./build-icons-json');
 const buildSprite = require('./build-sprite');
@@ -102,46 +103,46 @@ module.exports = require('coa')
     }
 
     // --config
-    if (opts.config) {
-      // string
-      if (opts.config.charAt(0) === '{') {
-        try {
-          config = JSON.parse(opts.config);
-        } catch (e) {
-          return printErrorAndExit(`Error: Couldn't parse config JSON.\n${String(e)}`);
+    try {
+      // search for or directly load a configuration file.
+      const explorer = cosmiconfigSync(pkg.name);
+      if (opts.config) {
+        // string
+        if (opts.config.charAt(0) === '{') {
+          try {
+            config = JSON.parse(opts.config);
+          } catch (e) {
+            return printErrorAndExit(`Error: Couldn't parse config JSON.\n${String(e)}`);
+          }
+          // external file
+        } else {
+          const configPath = path.resolve(opts.config);
+          const loaded = explorer.load(configPath);
+          if (loaded && loaded.config) {
+            config = loaded.config;
+          }
         }
-        // external file
+        // search config file
       } else {
-        const configPath = path.resolve(opts.config);
-        let configData;
-        try {
-          if (configPath.endsWith('.js')) {
-            config = require(configPath);
-          } else {
-            configData = fs.readFileSync(configPath, 'utf8');
-            config = JSON.parse(configData);
-          }
-        } catch (err) {
-          if (err.code === 'ENOENT') {
-            return printErrorAndExit(`Error: couldn't find config file '${opts.config}'.`);
-          } else if (err.code === 'EISDIR') {
-            return printErrorAndExit(`Error: directory '${opts.config}' is not a config file.`);
-          }
-          printErrorAndExit(err.message);
+        const searched = explorer.search();
+        if (searched && searched.config) {
+          config = searched.config;
         }
-        if (!config || Array.isArray(config)) {
-          return printErrorAndExit(`Error: invalid config file '${opts.config}'.`);
-        }
-        config = {
-          ...DEFAULT_CONFIG,
-          ...config,
-          svgAttrs: {
-            ...DEFAULT_CONFIG.svgAttrs,
-            ...config.svgAttrs,
-          },
-        };
-        console.log(`Reading config: `, config);
       }
+      if (typeof config !== 'object' || Array.isArray(config)) {
+        return printErrorAndExit(`Error: invalid config file '${config}'.`);
+      }
+      config = {
+        ...DEFAULT_CONFIG,
+        ...config,
+        svgAttrs: {
+          ...DEFAULT_CONFIG.svgAttrs,
+          ...(config.svgAttrs || {}),
+        },
+      };
+      console.log(`Reading config: `, config);
+    } catch (err) {
+      return printErrorAndExit(err.message);
     }
 
     // --quiet
@@ -164,7 +165,7 @@ module.exports = require('coa')
       buildReact(outputDir);
       // buildVue(inputDir, outputDir);
     } catch (error) {
-      printErrorAndExit(error);
+      return printErrorAndExit(error);
     }
   });
 
