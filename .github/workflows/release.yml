@@ -43,8 +43,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm ci
-      - run: npm run release
+        run: |
+          npm ci
+          npm run release
 
   publish-gpr:
     needs: release
