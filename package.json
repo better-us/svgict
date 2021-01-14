@@ -1,7 +1,7 @@
 {
   "name": "svgict",
   "version": "1.0.0",
-  "description": "Simple svg icon creator",
+  "description": "SVG Icon CreaTor. It is a svg icons component creator for react & vuejs.",
   "keywords": [
     "svg icon"
   ],
