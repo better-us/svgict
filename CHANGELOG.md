@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.1](https://github.com/ato-design/svgict/compare/v1.0.0...v1.0.1) (2021-01-07)
+
+
+### Bug Fixes
+
+* change cli file name ([7331d6e](https://github.com/ato-design/svgict/commit/7331d6e62fb280982228167a07cf6256e1536f15))
+
 # 1.0.0 (2021-01-07)
 
 
