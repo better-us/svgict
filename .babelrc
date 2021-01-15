@@ -1,11 +1,10 @@
 {
   "presets": [
     ["@babel/env", {
-      "modules": false,
+      "modules": "commonjs",
       "targets": {
-        "browsers": ["last 2 versions"]
+        "node": "8.0"
       }
-    }],
-    "@babel/react"
+    }]
   ]
 }

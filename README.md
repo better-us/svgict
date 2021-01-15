@@ -1,4 +1,4 @@
-# *SVGICT*
+# _SVGICT_
 
 *SVG I*con *C*rea*T*or. It is a svg icons component creator for react & vuejs.
 
@@ -34,7 +34,7 @@ Arguments:
 ```
 
 ```sh
-$ svgict -i ../folder/with/svg/files -o ../folder/ouput
+$ npx svgict -i ../folder/with/svg/files -o ../folder/ouput
 ```
 
 ## License and Copyright

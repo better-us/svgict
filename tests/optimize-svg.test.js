@@ -1,5 +1,5 @@
 /* eslint-env jest */
-const optimizeSvg = require('../optimize-svg');
+const optimizeSvg = require('../src/optimize-svg');
 
 test('optimizees SVG correctly', () => {
   const SVG =

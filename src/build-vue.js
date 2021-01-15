@@ -3,8 +3,6 @@ const fs = require('fs-extra');
 const path = require('path');
 const dedent = require('dedent');
 const camelcase = require('camelcase');
-const { promisify } = require('util');
-const rimraf = promisify(require('rimraf'));
 const { compile } = require('@vue/compiler-dom');
 
 async function buildVue(inDir, outDir) {

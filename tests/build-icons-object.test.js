@@ -1,5 +1,5 @@
 /* eslint-env jest */
-const buildIconsObject = require('../build-icons-object');
+const buildIconsObject = require('../src/build-icons-object');
 
 const SVG_FILES = {
   'icon1.svg':

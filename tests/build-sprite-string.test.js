@@ -1,5 +1,5 @@
 /* eslint-env jest */
-const buildSpriteString = require('../build-sprite-string');
+const buildSpriteString = require('../src/build-sprite-string');
 
 const icons = {
   icon1: '<line x1="23" y1="1" x2="1" y2="23"></line><line x1="1" y1="1" x2="23" y2="23"></line>',
