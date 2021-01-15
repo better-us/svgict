@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.2](https://github.com/ato-design/svgict/compare/v1.0.1...v1.0.2) (2021-01-15)
+
+
+### Bug Fixes
+
+* use babel ([20cbdc6](https://github.com/ato-design/svgict/commit/20cbdc6f581f2a72a629527665bafce3bb2e9b4d))
+
 ## [1.0.1](https://github.com/ato-design/svgict/compare/v1.0.0...v1.0.1) (2021-01-07)
 
 
