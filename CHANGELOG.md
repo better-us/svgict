@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [1.0.2](https://github.com/ato-design/svgict/compare/v1.0.1...v1.0.2) (2021-01-18)
+
+
+### Bug Fixes
+
+* include lib folder ([9984d15](https://github.com/ato-design/svgict/commit/9984d159224604e83a175730db81296ed472174f))
+* use babel ([20cbdc6](https://github.com/ato-design/svgict/commit/20cbdc6f581f2a72a629527665bafce3bb2e9b4d))
+* use strict, missing default-config ([973d741](https://github.com/ato-design/svgict/commit/973d741cc22b320f4c77c64faa6b86e3211ad5b0))
+
 ## [1.0.3](https://github.com/ato-design/svgict/compare/v1.0.2...v1.0.3) (2021-01-17)
 
 
