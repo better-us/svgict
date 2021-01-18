@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.3](https://github.com/ato-design/svgict/compare/v1.0.2...v1.0.3) (2021-01-17)
+
+
+### Bug Fixes
+
+* include lib folder ([136cc3c](https://github.com/ato-design/svgict/commit/136cc3c807b8eeafbc67ea50c16e70efee4d795b))
+
 ## [1.0.2](https://github.com/ato-design/svgict/compare/v1.0.1...v1.0.2) (2021-01-15)
 
 

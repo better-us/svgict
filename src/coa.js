@@ -11,7 +11,7 @@ const buildIconsJSON = require('./build-icons-json');
 const buildSprite = require('./build-sprite');
 const buildReact = require('./build-react');
 // const buildVue = require('./build-vue');
-const DEFAULT_CONFIG = require('./default-config.json');
+const DEFAULT_CONFIG = require('./default-config');
 /**
  * Command-Option-Argument.
  *

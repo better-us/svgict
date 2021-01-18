@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Build an SVG sprite string containing SVG symbols.
  * @param {Object} icons

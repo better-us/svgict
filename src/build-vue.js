@@ -1,4 +1,5 @@
-// const fs = require('fs').promises;
+'use strict';
+
 const fs = require('fs-extra');
 const path = require('path');
 const dedent = require('dedent');

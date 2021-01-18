@@ -1,3 +1,5 @@
+'use strict';
+
 const Svgo = require('svgo');
 const cheerio = require('cheerio');
 const { format } = require('prettier');
