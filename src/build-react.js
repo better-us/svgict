@@ -5,7 +5,7 @@ const fs = require('fs');
 const { format } = require('prettier');
 const upperCamelCase = require('uppercamelcase');
 
-async function buildReact(outDir) {
+async function buildReact(outDir, config = {}) {
   const icons = require(path.join(outDir, './icons.json'));
 
   console.log(`Building React Components to ${outDir}...`);

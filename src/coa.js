@@ -2,7 +2,6 @@
 
 const pkg = require('../package.json');
 
-const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const { cosmiconfigSync } = require('cosmiconfig');
@@ -159,10 +158,10 @@ module.exports = require('coa')
     const inputDir = path.resolve(input);
     const outputDir = path.resolve(output);
     try {
-      await optimizeSvgFiles(inputDir);
+      await optimizeSvgFiles(inputDir, config);
       buildIconsJSON(inputDir, outputDir);
       buildSprite(outputDir, config.svgAttrs);
-      buildReact(outputDir);
+      buildReact(outputDir, config);
       // buildVue(inputDir, outputDir);
     } catch (error) {
       return printErrorAndExit(error);
