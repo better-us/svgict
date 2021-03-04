@@ -39,4 +39,4 @@ $ npx svgict -i ../folder/with/svg/files -o ../folder/ouput
 
 ## License and Copyright
 
-This software is released under the terms of the [MIT license](https://github.com/ato-design/svgict/blob/main/LICENSE).
+This software is released under the terms of the [MIT license](https://github.com/better-us/svgict/blob/main/LICENSE).

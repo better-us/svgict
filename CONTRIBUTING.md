@@ -10,7 +10,7 @@ These steps will guide you through contributing to this project:
 - Clone it and install dependencies
 
 ```bash
-  git clone git@github.com:ato-design/svgicon-creator.git
+  git clone git@github.com:better-us/svgicon-creator.git
   npm install
 ```
 
