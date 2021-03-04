@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.1.1](https://github.com/ato-design/svgict/compare/v1.1.0...v1.1.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* update svgo ([d18dea5](https://github.com/ato-design/svgict/commit/d18dea57ba4179fc7c86d1b742616b696aa1ca17))
+
 # [1.1.0](https://github.com/ato-design/svgict/compare/v1.0.1...v1.1.0) (2021-01-19)
 
 
