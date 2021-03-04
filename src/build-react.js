@@ -7,6 +7,7 @@ const upperCamelCase = require('uppercamelcase');
 
 async function buildReact(outDir, config = {}) {
   const icons = require(path.join(outDir, './icons.json'));
+  const { svgAttrs } = config;
 
   console.log(`Building React Components to ${outDir}...`);
 
@@ -29,7 +30,7 @@ async function buildReact(outDir, config = {}) {
   const attrsToString = attrs => {
     return Object.keys(attrs)
       .map(key => {
-        if (key === 'width' || key === 'height' || key === 'stroke') {
+        if (key === 'width' || key === 'height' || key === 'fill') {
           return key + '={' + attrs[key] + '}';
         }
         if (key === 'rest') {
@@ -47,12 +48,8 @@ async function buildReact(outDir, config = {}) {
       xmlns: 'http://www.w3.org/2000/svg',
       width: 'size',
       height: 'size',
-      viewBox: '0 0 24 24',
-      fill: 'none',
-      stroke: 'color',
-      strokeWidth: 2,
-      strokeLinecap: 'round',
-      strokeLinejoin: 'round',
+      fill: 'color',
+      viewBox: svgAttrs.viewBox,
       rest: '...rest',
     };
 
@@ -60,7 +57,7 @@ async function buildReact(outDir, config = {}) {
       import React, {forwardRef} from 'react';
       import PropTypes from 'prop-types';
 
-      const ${ComponentName} = forwardRef(({ color = 'currentColor', size = 24, ...rest }, ref) => {
+      const ${ComponentName} = forwardRef(({ color = '${svgAttrs.fill}', size = ${svgAttrs.height}, ...rest }, ref) => {
         return (
           <svg ref={ref} ${attrsToString(defaultAttrs)}>
             ${icons[i]}

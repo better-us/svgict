@@ -1,20 +1,10 @@
 'use strict';
 
-const Svgo = require('svgo');
+const { optimize } = require('svgo');
 const cheerio = require('cheerio');
 const { format } = require('prettier');
 
-const DEFAULT_ATTRS = {
-  xmlns: 'http://www.w3.org/2000/svg',
-  width: 24,
-  height: 24,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  'stroke-width': 2,
-  'stroke-linecap': 'round',
-  'stroke-linejoin': 'round',
-};
+const DEFAULT_ATTRS = require('./default-config').svgAttrs;
 
 /**
  * Optimize SVG string.
@@ -23,29 +13,28 @@ const DEFAULT_ATTRS = {
  * @param {Promise<string>}
  */
 function optimizeSvg(svg, config = {}) {
-  return optimize(svg)
+  return new Promise(resolve => {
+    const result = optimize(svg, {
+      plugins: [
+        {
+          name: 'convertShapeToPath',
+          active: false,
+        },
+        {
+          name: 'mergePaths',
+          active: false,
+        },
+        { name: 'removeAttrs', params: { attrs: '(fill|stroke.*)' } },
+        {
+          name: 'removeTitle',
+          active: true,
+        },
+      ],
+    });
+    resolve(result.data);
+  })
     .then(svg => setAttrs(svg, config.svgAttrs))
     .then(code => format(code, { printWidth: 120, parser: 'html' }));
-}
-
-/**
- * Optimize SVG with `svgo`.
- * @param {string} svg - An SVG string.
- * @returns {Promise<string>}
- */
-function optimize(svg) {
-  const svgo = new Svgo({
-    plugins: [
-      { convertShapeToPath: false },
-      { mergePaths: false },
-      { removeAttrs: { attrs: '(fill|stroke.*)' } },
-      { removeTitle: true },
-    ],
-  });
-
-  return new Promise(resolve => {
-    svgo.optimize(svg, ({ data }) => resolve(data));
-  });
 }
 
 /**
