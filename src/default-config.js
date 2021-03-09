@@ -6,7 +6,7 @@ module.exports = {
     width: 24,
     height: 24,
     viewBox: '0 0 24 24',
-    fill: '#000000',
+    fill: 'currentColor',
   },
   quiet: true,
 };
